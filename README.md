@@ -7,7 +7,7 @@ We need to define `points_won_by` method and `score` method
 
 - `points_won_by` should increment the points by 1
 - before it can increment by one it needs to check 
- - games_won method should return ture or fasle
+ - games_won method should return true or fasle
  - sets_won method
 
 what does games_won method do ?
@@ -50,12 +50,12 @@ A player wins a game if that player has
 
 ### Running score representaton
 
-|Point|Score|
-|---|---|
-|0|0|
-|1|15|
-|2|30|
-|3|40|
+| Point | Score |
+| ----- | ----- |
+| 0     | 0     |
+| 1     | 15    |
+| 2     | 30    |
+| 3     | 40    |
 
 ### Solve for Deuce
 
