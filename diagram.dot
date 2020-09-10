@@ -1,0 +1,66 @@
+digraph G {
+    splines="FALSE";
+
+    /* Entities */
+    Player1 [label="Player1", shape="square"]
+    Player2 [label="Player2", shape="square"]
+    points4 [label="points >= 4", shape="diamond"]
+    diff2 [label=" (P1-P2) >= 2", shape="diamond"]
+    P1GrP2 [label=" (P1>P2)", shape="diamond"]
+    addPoints [label="AddPoints", shape="square"]
+    
+    // Games [label="Game", shape="square"]
+    // player1 [label="player1", shape="round"]
+    
+    /* Relationships */
+    Player1 -> points4[label=""]
+    points4 -> P1GrP2[label="Yes"]
+    points4 -> addPoints[label="No"]
+    Player2 -> points4[label=""]
+    P1GrP2 -> diff2[label="Yes"]
+    diff2 -> addPoints[label="No"]
+    diff2 -> Win
+
+    /* Ranks */
+    { rank=same; points4;  addPoints};
+    { rank=same; Player1; Player2};
+
+
+// }
+
+
+
+// // digraph D {
+
+// //   subgraph cluster_p {
+//     label = "Match";
+
+//     subgraph cluster_c1 {
+//       label = "Set";
+//       a;
+
+//       subgraph cluster_gc_1 {
+//         label = "...Game N";
+//          b;
+//       }
+//       subgraph cluster_gc_2 {
+//         label = "Game 2";
+//           c;
+//           d;
+//       }
+//       subgraph cluster_gc_3 {
+//         label = "Game 1";
+//           e;
+//           f;
+//       }
+
+//     }
+
+//     subgraph cluster_c2 {
+//       label = "Child two";
+//       e;
+//     }
+//   }
+// } 
+
+}
