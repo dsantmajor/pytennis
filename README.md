@@ -1,6 +1,60 @@
 # Tennis Scoring
 
-## Approach
+## Usage
+
+```python
+ python3 pytennis/pytennis.py -h
+
+pytennis
+
+Usage:
+  pytennis.py --player-name <player-name>  --opponent-name <opponent-name>
+
+Parameters:
+  --player-name <player-name>            Provide name of a player Ex: Federer
+  --opponent-name <opponent-name>        Provide name of an Opponent Ex: Nadal
+  
+Options:
+  -h --help                 Show this screen.
+  --version                 Show version.
+```
+
+### Problem Definiton
+
+DiUS is hosting a tennis tournament. To aid with this, we're developing a scoring system. Further details in [click here](Problem.md)
+
+### Relationship between Match Set and Games
+
+`Match --1--> Set --*--> Games`
+
+### How does a player win a Game
+
+A player wins a game if that player has
+
+- minimum points = 4 i.e. p1(points) or p2(points) >= 4
+  
+- difference in points between the two players > 2 `P1(points) -P2(points) >= 2` or `P2(points) -P1(points) >= 2`
+
+### Running score representaton
+
+| Point | Score |
+| ----- | ----- |
+| 0     | 0     |
+| 1     | 15    |
+| 2     | 30    |
+| 3     | 40    |
+
+### Solve for Deuce
+
+check if points scored by P1 and P2 >= 3 and P1=P2
+
+### Solve for Advantage
+
+check if points scored by P1 and P2 >=3 and if P1-P2 > 1 or p2-p1 > 1
+
+## Approach ( This changed while developing)
+
+![Draft](images/diagram.dot.svg)
 
 We have to initialise Player , Match , Set, Game, 
 We need to define `points_won_by` method and `score` method
@@ -35,32 +89,3 @@ how to fetch ?
 
 points_won_by( player_name)
  self.player = player_name
-
-### Relationship between Match Set and Games
-
-`Match --1--> Set --*--> Games`
-
-### How does a player win a Game
-
-A player wins a game if that player has
-
-- minimum points = 4 i.e. p1(points) or p2(points) >= 4
-  
-- difference in points between the two players > 2 `P1(points) -P2(points) >= 2` or `P2(points) -P1(points) >= 2`
-
-### Running score representaton
-
-| Point | Score |
-| ----- | ----- |
-| 0     | 0     |
-| 1     | 15    |
-| 2     | 30    |
-| 3     | 40    |
-
-### Solve for Deuce
-
-check if points scored by P1 and P2 >= 3 and P1=P2
-
-### Solve for Advantage
-
-check if points scored by P1 and P2 >=3 and if P1-P2 > 1 or p2-p1 > 1
