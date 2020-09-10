@@ -78,35 +78,24 @@ class Match:
         self._p2_tiebrk_points_won = tiebrk_points_won
 
     def print_variables(self):
-        """Prints the player's and opponet's name, points_won, games_won, sets_won to the console
-
-        Returns:
-            [str]: [the player's and opponet's name, points_won, games_won, sets_won to the console]
-        """
         print(f"Name: {self._p1_name} Points Won: {self._p1_points_won} Games Won: {self._p1_games_won}  Sets Won: {self._p1_sets_won}")
         print(f"Name: {self._p2_name} Points Won: {self._p2_points_won} Games Won: {self._p2_games_won}  Sets Won: {self._p2_sets_won}")
         return f"Name: {self._p1_name} Points Won: {self._p1_points_won} Games Won: {self._p1_games_won}  Sets Won: {self._p1_sets_won}"
 
     def p1_reset_points_games(self):
-        """ Reset points and games
-
-            Resets player's and opponet's points_won and games_won values to zero.
-        """
+        print(f"Count {Match.counter}: Set WinCondition: Name: {self._p1_name} Points Won: {self._p1_points_won}  Name: {self._p2_name} Points Won: {self._p2_points_won} Games P1 Won: {self._p1_games_won} Game Difference P1 - P2 : {self._p1_games_won - self._p2_games_won} P1 Sets won: {self._p1_sets_won} Sets Difference P1 -P2: {self._p1_sets_won - self._p2_sets_won}")
         self._p1_points_won = 0
+        print(f"Player 1 points reset : {self._p1_points_won}")
         self._p2_points_won = 0
+        print(f"Player 2 points reset : {self._p2_points_won}")
+        # print("out
         self._p1_games_won = 0
+        print(f"Player 1 Games won reset : {self._p1_games_won}")
         self._p2_games_won = 0
+        print(f"Player 2 Games won reset : {self._p2_games_won}")
         return
 
     def convert_points_to_score(self, player_name):
-        """Converts points to tennis score representation
-
-        Args:
-            player_name ([str]): [Name of the player or opponent]
-
-        Returns:
-            [int]: [tennis score representation]
-        """
         if player_name == self._p1_name:
             if self._p1_points_won == 0:
                 return "nil"
@@ -130,26 +119,20 @@ class Match:
 
 
     def score(self):
-        """Provides a summary of the current score
-           Games won, points won for each player and opponet
+        """Score
 
-        Returns:
-            [empty]: [empty]
-            
-            When we call match.score();
+            match.score();
+             // this will return "0-0, 15-15"
+             p1-games won - p2-games won, p1points - p2 points
+            // this will return "0-0, 40-15"
 
-            Example outputs:
-            this will return "0-0, 15-15"
-        
-            this will return "0-0, 40-15"
+            // this will return "0-0, Deuce"
 
-            this will return "0-0, Deuce"
+            // this will return "0-0, Advantage player 1"
 
-            this will return "0-0, Advantage player 1"
+            // this will return "1-0"
 
-            this will return "1-0"
         """
-        
         if self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 0:
             print(f"{self._p1_games_won} - {self._p2_games_won}, Deuce")
         elif self._p2_points_won >= 3 and self._p1_points_won >= 3 and self._p2_points_won - self._p1_points_won == 1:
@@ -157,95 +140,138 @@ class Match:
         elif self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 1:
             print(f"{self._p1_games_won} - {self._p2_games_won}, Advantage {self._p1_name}")
         else:
-            # print(f"P1_games_won - P2_games_won, P1_points_won - P2_points_won")
+            print(f"P1_games_won - P2_games_won, P1_points_won - P2_points_won")
             print(f"{self._p1_games_won} - {self._p2_games_won}, {match.convert_points_to_score(self._p1_name)} - {match.convert_points_to_score(self._p2_name)}")
         
         return
     
 
     def p2_reset_points_games(self):
-        """ Reset points and games
-
-            Resets player's and opponet's points_won and games_won values to zero.
-        """
-        # This code can be deleted in refactoring
+        print(f"Count {Match.counter}: Set WinCondition: Name: {self._p2_name} Points Won: {self._p2_points_won}  Name: {self._p1_name} Points Won: {self._p1_points_won} Games P2 Won: {self._p2_games_won} Game Difference P2 - P1 : {self._p2_games_won - self._p1_games_won} P2 Sets won: {self._p2_sets_won} Sets Difference P2 - P1: {self._p2_sets_won - self._p1_sets_won}")
         self._p2_points_won = 0
+        print(f"Player 2 points reset : {self._p2_points_won}")
         self._p1_points_won = 0
+        print(f"Player 2 points reset : {self._p1_points_won}")
+        # print("out
         self._p2_games_won = 0
+        print(f"Player 2 Games won reset : {self._p2_games_won}")
         self._p1_games_won = 0
+        print(f"Player 1 Games won reset : {self._p1_games_won}")
         return
 
     def points_won_by(self, player_name):
-        """Increment points by one
-            Increments the points by one for a player / opponent
-            Before doing that it checks for games won, sets won, deuce and advantage
 
-        Args:
-            player_name ([str]): Name of the player or opponent
-        """
-
+        print(f"Outer Counter set to {Match.counter}")
         if player_name == self._p1_name:
             if self._p1_games_won == 6 and self._p2_games_won == 5:
                 self._p1_games_won += 1
+                print(
+                    f"Player1 won Set {self._p1_games_won} - {self._p2_games_won} ")
                 match.p1_reset_points_games()
                 # Solving for Tie-Breaker
             elif self._p1_games_won == 6 and self._p2_games_won == 6:
+                print(
+                    f"Tie Break: {self._p1_games_won} - {self._p1_games_won} ")
                 self._p1_tiebrk_points_won += 1
                 if self._p1_tiebrk_points_won >= 7 and self._p1_tiebrk_points_won - self._p2_tiebrk_points_won >= 2:
                     self._p1_sets_won += 1
                     match.p1_reset_points_games()
                     self._p1_tiebrk_points_won = 0
+                    print(
+                        f"Player 1 tie break points reset : {self._p1_tiebrk_points_won }")
                     self._p2_tiebrk_points_won = 0
+                    print(
+                        f"Player 2 tie break points reset : {self._p2_tiebrk_points_won}")
 
             elif self._p1_games_won >= 6 and self._p1_games_won - self._p2_games_won >= 2:
                 self._p1_sets_won += 1
                 match.p1_reset_points_games()
             else:
+                print(f"P1 Counter set to {Match.counter}")
+                print(f"Starting P1 Points Won: {self._p1_points_won}")
                 self._p1_points_won += 1
-                # if self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 0:
+                Match.counter += 1
+                print(
+                    f"Count {Match.counter}: P1 Points Won: {self._p1_points_won}")
+                if self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 0:
+                    print(f"We are in points = 3 Deuce mode")
+                    print(
+                        f"Its a Deuce: P1: {self._p1_points_won} - P2: {self._p2_points_won}")
 
-                # elif self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 1:
+                elif self._p1_points_won >= 3 and self._p2_points_won >= 3 and self._p1_points_won - self._p2_points_won == 1:
+                    print(f"we are in advantage mode")
+                    print(f"Advantage P1: {self._p1_points_won }")
 
-                # else:
-                if self._p1_points_won >= 4 and self._p1_points_won - self._p2_points_won >= 2:
-                    self._p1_games_won += 1
-                    self._p1_points_won = 0
-                    self._p2_points_won = 0
+                else:
+                    print(f"Checking for point above 4")
+                    if self._p1_points_won >= 4 and self._p1_points_won - self._p2_points_won >= 2:
+                        self._p1_games_won += 1
+
+                        print(f"Count {Match.counter}: Game WinCondition: Name:{self._p1_name} Points Won:{self._p1_points_won} | Name:{self._p2_name} Points Won:{self._p2_points_won} | Games P1 Won:{self._p1_games_won} | Game Difference P1 - P2 :{self._p1_games_won - self._p2_games_won}")
+                        self._p1_points_won = 0
+                        print(f"Player 1 points reset : {self._p1_points_won}")
+                        self._p2_points_won = 0
+                        print(f"Player 2 points reset : {self._p2_points_won}")
+                        # print("out
 
             print(
-                f"Name: {self._p1_name} --> (Points Won: {self._p1_points_won} Games Won: {self._p1_games_won})")
+                f"Count {Match.counter}: Outer: Name: {self._p1_name} Points Won: {self._p1_points_won} Games Won: {self._p1_games_won}")
 
         elif player_name == self._p2_name:
 
             if self._p2_games_won == 6 and self._p1_games_won == 5:
                 self._p2_games_won += 1
+                print(
+                    f"Player2 won Set {self._p2_games_won} - {self._p1_games_won}")
                 match.p2_reset_points_games()
                 # Solve for Tie-Breaker
             elif self._p2_games_won == 6 and self._p1_games_won == 6:
+                print(
+                    f"Tie Break: {self._p2_games_won} - {self._p1_games_won} ")
                 self._p2_tiebrk_points_won += 1
                 if self._p2_tiebrk_points_won >= 7 and self._p2_tiebrk_points_won - self._p1_tiebrk_points_won >= 2:
                     self._p2_sets_won += 1
                     match.p2_reset_points_games()
                     self._p1_tiebrk_points_won = 0
+                    print(
+                        f"Player 1 tie break points reset : {self._p1_tiebrk_points_won }")
                     self._p2_tiebrk_points_won = 0
+                    print(
+                        f"Player 2 tie break points reset : {self._p2_tiebrk_points_won}")
 
             elif self._p2_games_won >= 6 and self._p2_games_won - self._p1_games_won >= 2:
                 self._p2_sets_won += 1
                 match.p2_reset_points_games()
             else:
+                print(f"P2 Counter set to {Match.counter}")
+                print(f"Starting P2 Points Won: {self._p2_points_won}")
                 self._p2_points_won += 1
-                # if self._p2_points_won >= 3 and self._p1_points_won >= 3 and self._p2_points_won - self._p1_points_won == 0:
-                # elif self._p2_points_won >= 3 and self._p1_points_won >= 3 and self._p2_points_won - self._p1_points_won == 1:
+                Match.counter += 1
+                print(
+                    f"Count {Match.counter}: P2 Points Won: {self._p2_points_won}")
+                if self._p2_points_won >= 3 and self._p1_points_won >= 3 and self._p2_points_won - self._p1_points_won == 0:
+                    print(f"We are in points = 3 Deuce mode")
+                    print(
+                        f"Its a Deuce: P1: {self._p1_points_won} - P2: {self._p2_points_won}")
 
+                elif self._p2_points_won >= 3 and self._p1_points_won >= 3 and self._p2_points_won - self._p1_points_won == 1:
+                    print(f"we are in advantage mode")
+                    print(f"Advantage P2: {self._p2_points_won }")
 
-                # else:
-                if self._p2_points_won >= 4 and self._p2_points_won - self._p1_points_won >= 2:
-                    self._p2_games_won += 1
-                    self._p2_points_won = 0
-                    self._p2_points_won = 0
+                else:
+                    print(f"Checking for point above 4")
+                    if self._p2_points_won >= 4 and self._p2_points_won - self._p1_points_won >= 2:
+                        self._p2_games_won += 1
+
+                        print(f"Count {Match.counter}: Game WinCondition: Name:{self._p2_name} Points Won:{self._p2_points_won} | Name:{self._p1_name} Points Won:{self._p1_points_won} | Games P2 Won:{self._p2_games_won} | Game Difference P2 - P1 :{self._p2_games_won - self._p1_games_won}")
+                        self._p2_points_won = 0
+                        print(f"Player 1 points reset : {self._p1_points_won}")
+                        self._p2_points_won = 0
+                        print(f"Player 2 points reset : {self._p2_points_won}")
+                        # print("out
 
             print(
-                f"Name: {self._p2_name} --> (Points Won: {self._p2_points_won} Games Won: {self._p2_games_won})")
+                f"Count {Match.counter}: Outer: Name: {self._p2_name} Points Won: {self._p2_points_won} Games Won: {self._p2_games_won}")
         else:
             print(f"{player_name} is not registered")
 
@@ -255,7 +281,7 @@ if __name__ == "__main__":
     print(arguments, file=sys.stderr)
 
     match = Match(arguments["--player-name"], arguments["--opponent-name"])
-    # match.print_variables()
+    match.print_variables()
 
     # Sample implementation showing how pytennis works
 
