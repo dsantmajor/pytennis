@@ -89,3 +89,10 @@ how to fetch ?
 
 points_won_by( player_name)
  self.player = player_name
+
+
+## NOTES
+
+- Single responsibility principle for Classes , may be to functions too
+
+- Making use of pytest for test driven or Red Green Refactor
