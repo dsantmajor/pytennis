@@ -97,7 +97,7 @@ class Match:
         """
         print(f"Name: {self._p1._name} Points Won: {self._p1._points_won} Games Won: {self._p1._games_won}  Sets Won: {self._p1._sets_won}")
         print(f"Name: {self._p2._name} Points Won: {self._p2._points_won} Games Won: {self._p2._games_won}  Sets Won: {self._p2._sets_won}")
-        return 
+        return f"Name: {self._p2._name} Points Won: {self._p2._points_won} Games Won: {self._p2._games_won}  Sets Won: {self._p2._sets_won}"
 
 #     def p1_reset_points_games(self):
 #         """ Reset points and games

@@ -6,23 +6,40 @@ from docopt import docopt
 import sys
 
 def test_print_variables():
-    
-    match = Match("Don", "Rowena")
+
+    # Setup
+    player_name = "Don"
+    opponent_name = "Rowena"
+    output = 'Name: Rowena Points Won: 0 Games Won: 0  Sets Won: 0'
+
+    # Exercise
+
+    match = Match(player_name, opponent_name)
     # match.print_variables()
-    assert match.print_variables() == None
+    result = match.print_variables()
+
+    # Verify
+    assert result == output
+
+    # Clean-up 
+    
+
 
 def test_points_won_by():
-    match = Match("Don", "Rowena")
+
+    # Setup
+    player_name = "Don"
+    opponent_name = "Rowena"
+    output = " "
+
+    # Exercise
+    match = Match(player_name, opponent_name)
     match.points_won_by("Don")
-    match.points_won_by("Rowena")
-    match.score()
-    match.points_won_by("Don")
-    match.points_won_by("Don")
-    match.score()
-    match.points_won_by("Rowena")
-    match.points_won_by("Rowena")
-    match.score()
-    match.points_won_by("Don")
-    match.score()
-    match.points_won_by("Don")
-    match.score()
+    result = match.score()
+
+    # Verify
+    
+    assert result == output
+
+    # Cleanup
+
